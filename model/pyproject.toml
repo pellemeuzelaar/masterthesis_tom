@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "CC-NDP"
+version = "1.0.0"
+description = "Chance-constrained network design problem"
+authors = ["Niels Wouda <n.a.wouda@rug.nl>"]
+license = "MIT"
+repository = "https://github.com/N-Wouda/CC-NDP"
+include=[
+    "LICENSE",
+    "README.md"
+]
+packages = [
+    { include = "ccndp" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+numpy = "^1.20"
+pyyaml = "^5.4"
+matplotlib = "^3.4"
+
+# For generating experiments
+pydoe2 = "^1.3"
+gurobipy = "^10.0.1"
+
+[tool.poetry.dev-dependencies]
+black = "^23.1.0"
+
+[tool.poetry.scripts]
+solve = "ccndp.solve:main"
+make_experiments = "ccndp.make_experiments:main"
+plot = "ccndp.plot:main"
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+case_sensitive = true
+line_length = 79
+profile = "black"
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
